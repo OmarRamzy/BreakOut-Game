@@ -1,0 +1,351 @@
+body{
+    overflow: hidden;
+}
+
+/* start life area */
+@keyframes lifeAnimation {
+  60%{
+   transform: scale(1.3);
+ }
+ 100%{
+   transform: scale(1);
+ } 
+}
+
+#life-area{
+  font-size: 21px;
+  font-weight: bold;
+  color: #4682B4;
+  text-align: right;
+}
+
+.life{
+  display: inline;
+  animation: lifeAnimation;
+  animation-duration: 1s;
+  color: rebeccapurple;
+}
+#lifecnt{
+  display: inline-block;
+}
+/* end life area */
+
+#board{
+    position: relative;
+    
+}
+
+/* start ball */
+#ball{
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+}
+/* end ball */
+
+/* start brick */
+#brick-area{
+    position: relative;
+    height: 300px;
+    padding: 0 20px;
+}
+
+.brick{
+    background-color: #87CEFA;
+    position: absolute;
+    overflow: hidden;
+}
+
+@keyframes removed-item-animation{
+  0%{
+    opacity: 1;
+    transform: rotateZ(180deg);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(600px) rotateZ(90deg);
+  }
+}
+.remove-item {
+  animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+}
+
+.brick>div{
+    width: 18px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #4682B4;
+    position: absolute;
+}
+
+.brick>div:nth-child(1){
+    right: 30px;
+    top: -9px;
+}
+
+.brick>div:nth-child(2){
+    right: 30px;
+    bottom: -9px;
+}
+
+.brick>div:nth-child(3){
+    right: -10px;
+    height: 20px;
+}
+
+.brick>div:nth-child(4){
+    left: -10px;
+    height: 20px;
+}
+/* end brick */
+
+/* start bonus */
+  @keyframes bonusAnimation{
+    to{transform: rotateX(35deg);}
+  }
+  .bonus{
+    width: 55px;
+    height: 14px;
+    text-align: center;
+    color:white;
+    border-radius: 7px;
+    padding: 0;
+    font-size: 12px;
+    animation-name: bonusAnimation;
+    animation-duration: 0.2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    background-color:	#FF6347;
+    border: 1px solid #00CED1;
+    position: absolute;
+    overflow: hidden;
+    display: none;
+  }
+  .bonus>div{
+    width: 13px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #00CED1;
+    position: absolute;
+    right: -7px;
+  }
+  .bonus>div:nth-child(1){
+    left: -7px;
+  }
+  /* end bonus */
+
+  /* start plate */
+  #plate{
+    background-color: #20B2AA;
+    position: absolute;
+    border-radius: 10px 0 10px 0;
+    bottom: 0;
+  }
+  #plate>div:nth-child(1){
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 5px solid 	#FF6347;
+    transform: rotateX(180deg);
+    top: 5px;
+    width: 10px;
+    position: absolute;
+  }
+  #plate .guns{
+    width: 12px;
+    height: 5px;
+    background-color: #FF6347;
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: -5px;
+    right: 1px;
+    display: none;
+  }
+  #plate .guns:nth-child(3){ /* new */
+    left: 6px;
+  }
+  .long{
+    width: 150px !important;
+  }
+  .long>div:nth-child(1){
+    width: 60px !important;
+  }
+  /* end plate */
+
+  /* start bullet */
+  .bullet{
+    background-color: red;
+    width: 3px;
+    height: 8px;
+    box-shadow: 0px 7px 4px #FFA500;
+    position: absolute;
+    display: none;
+  }
+  /* end bullet */
+
+  /* Game over annimation */
+
+  @-webkit-keyframes animacao1 { 0% {background: #D62623;}
+							   50% {background: #EE3430;}
+							   100% {background: #FB3733;} }
+
+  @-moz-keyframes animacao1 { 0% {background: #D62623;}
+							50% {background: #EE3430;}
+							100% {background: #FB3733;} }
+
+  @keyframes animacao1 { 0% {background: #D62623;}
+							   50% {background: #EE3430;}
+							   100% {background: #FB3733;} }
+
+
+  #endGame {
+    width: 750px;
+		height: 100%;
+		margin: auto;
+		margin-top: 20px;
+    border-radius: 40px;
+    -webkit-animation-name: animacao1;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-timing-function:  linear;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+
+		-moz-animation-name: animacao1;
+		-moz-animation-duration: 1s;
+		-moz-animation-timing-function:  linear;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-direction: alternate; 
+
+		animation-name: animacao1;
+		animation-duration: 1s;
+		animation-timing-function:  linear;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+    display: none;
+  }
+
+
+  .gameover,.win {width:750px;
+    height: auto;
+    padding-top: 60px;
+    background: none;
+  }
+
+  .gameover p , .win p {margin-top: 0px;
+      margin-bottom: 0px;
+      font-size: 160px;
+      font-family: 'Black Ops One', cursive;
+      line-height: 120px;
+      text-align: center;
+      text-shadow: 5px 5px #000000;
+      color: #ffffff;
+    }
+
+    
+  .continue	{width: 750px;
+			height: auto;
+      padding-top: 40px;
+    }
+
+  .continue p {margin-top: 0px;
+			margin-bottom: 0px;
+			text-align: center;
+			font-size: 40px;
+			font-weight: bold;
+			font-family: corbel;
+			color: #ffffff;
+      text-shadow: 2.5px 2.5px #000000;
+    }
+
+  .condition {width: 550px;
+		height: auto;
+		padding-top: 50px;
+    margin: auto;
+  }
+
+  .yes  {text-align: center;
+		font-size: 60px;
+		font-weight: bold;
+		font-family: corbel;
+		color: #ffffff;
+		text-decoration: none;
+		text-shadow: 2.5px 2.5px #000000;
+		padding: 25px 110px 25px 110px;
+    border: 1px solid #000000;
+		border-radius: 20px;
+		background: #006400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    
+  @-webkit-keyframes animacao2 { from {-webkit-transform: scale(1);} 
+								to {-webkit-transform: scale(1.2);} }
+
+  @-moz-keyframes animacao2 { from {-moz-transform: scale(1);} 
+								to {-moz-transform: scale(1.1);} }
+
+  @keyframes animacao2 { from {transform: scale(1);} 
+								to {transform: scale(1.1);} }
+
+
+  .yes:hover {-webkit-animation-name: animacao2;
+		-webkit-animation-duration: 0.8s;
+		-webkit-animation-timing-function:  linear;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+
+		-moz-animation-name: animacao2;
+		-moz-animation-duration: 0.8s;
+		-moz-animation-timing-function:  linear;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-direction: alternate;
+
+		animation-name: animacao2;
+		animation-duration: 0.8s;
+		animation-timing-function:  linear;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;}
+
+  @-webkit-keyframes animacao3 { 0% {-webkit-transform: translate(-5px,0px);} 
+							   25% {-webkit-transform: translate(-2.5px, 0px);}
+							   50% {-webkit-transform: translate(0px, 0px);}
+							   75% {-webkit-transform: translate(2.5px, 0px);}
+							   100% {-webkit-transform: translate(5px, 0px);} }
+
+  @-moz-keyframes animacao3 { 0% {-moz-transform: translate(-5px,0px);} 
+							   25% {-moz-transform: translate(-2.5px, 0px);}
+							   50% {-moz-transform: translate(0px, 0px);}
+							   75% {-moz-transform: translate(2.5px, 0px);}
+							   100% {-moz-transform: translate(5px, 0px);} }
+
+  @keyframes animacao3 { 0% {transform: translate(-5px,0px);} 
+							   25% {transform: translate(-2.5px, 0px);}
+							   50% {transform: translate(0px, 0px);}
+							   75% {transform: translate(2.5px, 0px);}
+							   100% {transform: translate(5px, 0px);} }
+
+
+                 .heart {
+                  width: 25px ;
+                  height: 25px ;
+                  background-color: #ff4d4d ;
+                  transform: rotate(45deg) ;
+                }
+                .heart::after , .heart::before {
+                  content: "" ;
+                  width: 25px ;
+                  height: 25px ;
+                  position: absolute ;
+                  border-radius: 100% ;
+                  background-color: #ff4d4d ;
+                }
+                .heart::after {
+                  bottom: 12.5px ;
+                  left: 0px ;
+                }
+                .heart::before {
+                  top: 0px ;
+                  left: -12.5px ;
+                }
